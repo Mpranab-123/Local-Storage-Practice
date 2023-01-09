@@ -13,7 +13,7 @@
     </header>
 
     <section class="container">
-      <form id="my-form">
+      <form id="my-form" onsubmit="saveToLocalStorage(event)">
         <h1>Add User</h1>
         <div class="msg"></div>
         <div>
@@ -23,6 +23,10 @@
         <div>
           <label for="email">Email:</label>
           <input type="text" id="email">
+        </div>
+        <div>
+          <label for="phoneNumber">Phone Number:</label>
+          <input type="text" id="phoneNumber">
         </div>
         <input class="btn" type="submit" value="Submit">
       </form>
