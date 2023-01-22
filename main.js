@@ -21,6 +21,20 @@ function saveToLocalStorage(event){
 }
 function showUserOnScreen(obj){
     const parentElem=document.getElementById('users');
-    parentElem.innerHTML=parentElem.innerHTML + `${obj.name} - ${obj.email} - ${obj.phoneNumber}`;
+    const childElem=document.createElement('li')
+    childElem.textContent=obj.name +' - '+obj.email+' - '+obj.phoneNumber;
+
+    // parentElem.innerHTML= parentElem.innerHTML + `${obj.name} - ${obj.email} - ${obj.phoneNumber}`;
+
+    const deleteButton=document.createElement('input')
+    deleteButton.type="button"
+    deleteButton.value="Delete"
+    deleteButton.onclick= () => {
+        localStorage.removeItem(obj.email)
+        parentElem.removeChild(childElem)
+    }
+
+    childElem.appendChild(deleteButton)
+    parentElem.appendChild(childElem)
 
 }
