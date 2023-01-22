@@ -34,6 +34,17 @@ function showUserOnScreen(obj){
         parentElem.removeChild(childElem)
     }
 
+    const editButton=document.createElement('input')
+    editButton.type="button"
+    editButton.value="Edit"
+    editButton.onclick= () => {
+        localStorage.removeItem(obj.email)
+        parentElem.removeChild(childElem)
+        document.getElementById('name').value=obj.name;
+        document.getElementById('email').value=obj.email;
+        document.getElementById('phoneNumber').value=obj.phoneNumber;
+    }
+    childElem.appendChild(editButton)
     childElem.appendChild(deleteButton)
     parentElem.appendChild(childElem)
 
