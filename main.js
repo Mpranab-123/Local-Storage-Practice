@@ -64,29 +64,42 @@ function showUserOnScreen(obj){
     deleteButton.type="button"
     deleteButton.value="Delete"
     deleteButton.onclick= () => {
-        axios.delete('https://crudcrud.com/api/d574b1c7ded44ac985502e78c1e9fd76/appointmentData/643c1f306246ac03e8533546')
+        axios.delete(`https://crudcrud.com/api/d574b1c7ded44ac985502e78c1e9fd76/appointmentData/${obj._id}`)
   .then((response) => {
-    console.log(response.data);
+    console.log(obj._id);
   })
   .catch((error) => {
     console.log(error);
   });
-        // localStorage.removeItem(obj.email)
-        // parentElem.removeChild(childElem)
+        // localStorage.removeItem(obj._id)
+        parentElem.removeChild(childElem)
     }
 
-    const editButton=document.createElement('input')
+   
+    const editButton =document.createElement('input')
     editButton.type="button"
-    editButton.value="Edit"
-    editButton.onclick= () => {
-        localStorage.removeItem(obj.email)
-        parentElem.removeChild(childElem)
-        document.getElementById('name').value=obj.name;
-        document.getElementById('email').value=obj.email;
-        document.getElementById('phoneNumber').value=obj.phoneNumber;
-    }
-    childElem.appendChild(editButton)
-    childElem.appendChild(deleteButton)
-    parentElem.appendChild(childElem)
+    editButton.value='Edit'
+    editButton.onclick =() => {
+    //* USING AXIOS *//
+    axios.put(`https://crudcrud.com/api/d574b1c7ded44ac985502e78c1e9fd76/appointmentData/${obj._id}`)
+        .then((response) => {
+            removeItem(obj._id)
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+
+    // localStorage.removeItem(obj._id)
+    parentElem.removeChild(childElem)
+    document.getElementById('name').value=obj.name;
+    document.getElementById('email').value=obj.email;
+    document.getElementById('phoneNumber').value=obj.phoneNumber;
+   }
+
+   
+   childElem.appendChild(editButton)
+   childElem.appendChild(deleteButton)
+   parentElem.appendChild(childElem)
 
 }
+ 
