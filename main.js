@@ -4,7 +4,7 @@ function saveToLocalStorage(event){
     const email=event.target.email.value;
     const phoneNumber=event.target.phoneNumber.value;
 
-//    // localStorage.setItem('name', name);
+//    localStorage.setItem('name', name);
 //     localStorage.setItem('email', email);
 //     localStorage.setItem('phoneNumber',phno);
 
@@ -13,11 +13,21 @@ function saveToLocalStorage(event){
         email,
         phoneNumber
     }
+axios.post("https://crudcrud.com/api/d574b1c7ded44ac985502e78c1e9fd76/appointmentData",obj)
+.then((response)=>{
+    showUserOnScreen(response.data)
+    //console.log(response)
+})
+.catch((err)=>{
+    document.body.innerHTML=document.body.innerHTML+"<h4> Something went wrong </h4>"
+    console.log(err)
+})
+
 //    localStorage.setItem(obj.name, JSON.stringify(obj));
-      localStorage.setItem(obj.email, JSON.stringify(obj));
+   //   localStorage.setItem(obj.email, JSON.stringify(obj));
    //localStorage.setItem(obj.phoneNumber, JSON.stringify(obj));
 
-   showUserOnScreen(obj);
+   //showUserOnScreen(obj);
 }
 function showUserOnScreen(obj){
     const parentElem=document.getElementById('users');
