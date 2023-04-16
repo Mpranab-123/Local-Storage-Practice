@@ -29,6 +29,30 @@ axios.post("https://crudcrud.com/api/d574b1c7ded44ac985502e78c1e9fd76/appointmen
 
    //showUserOnScreen(obj);
 }
+
+window.addEventListener("DOMContentLoaded",()=>{
+
+    axios.get("https://crudcrud.com/api/d574b1c7ded44ac985502e78c1e9fd76/appointmentData")
+    .then((response)=>{
+        //console.log(response)
+        for(var i=0;i<response.data.length;i++){
+            showUserOnScreen(response.data[i])
+        }
+    })
+    .catch((error)=>{
+        console.log(error)
+    })
+    // const localStorageObj=localStorage;
+    // const localstoragekeys= Object.keys(localStorageObj)
+
+    // for(var i=0;i<localstoragekeys.length;i++){
+    //     const key=localstoragekeys[i]
+    //     const userDetailsString=localStorageObj[key];
+    //     const userDetailsObj= JSON.parse(userDetailsString);
+    //     showUserOnScreen(userDetailsObj)
+    // }
+})
+
 function showUserOnScreen(obj){
     const parentElem=document.getElementById('users');
     const childElem=document.createElement('li')
