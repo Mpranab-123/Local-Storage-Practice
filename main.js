@@ -64,8 +64,15 @@ function showUserOnScreen(obj){
     deleteButton.type="button"
     deleteButton.value="Delete"
     deleteButton.onclick= () => {
-        localStorage.removeItem(obj.email)
-        parentElem.removeChild(childElem)
+        axios.delete('https://crudcrud.com/api/d574b1c7ded44ac985502e78c1e9fd76/appointmentData/643c1f306246ac03e8533546')
+  .then((response) => {
+    console.log(response.data);
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+        // localStorage.removeItem(obj.email)
+        // parentElem.removeChild(childElem)
     }
 
     const editButton=document.createElement('input')
